@@ -4,7 +4,7 @@ Docker image for freeplay [Day of Defeat: Source](http://www.dayofdefeat.com/) s
 # Linux Container
 [![](https://images.microbadger.com/badges/image/lacledeslan/gamesvr-srcds-dods-freeplay:linux.svg)](https://microbadger.com/images/lacledeslan/gamesvr-srcds-dods-freeplay:linux "Get your own image badge on microbadger.com")
 ```
-docker pull lacledeslan/gamesvr-dods-svencoop-freeplay:linux
+docker pull lacledeslan/gamesvr-dods-freeplay:linux
 ```
 
 # Build Triggers
