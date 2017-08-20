@@ -1,22 +1,20 @@
 # escape=`
 
-FROM lacledeslan/gamesvr-srcds-dods:linux
+FROM lacledeslan/gamesvr-dods
 
 LABEL maintainer "Laclede's LAN <contact@lacledeslan.com>"
 
-ENV IMAGE="gamesvr-srcds-dods-freeplay:linux"
-
-USER root
+ENV IMAGE="gamesvr-dods-freeplay"
 
 HEALTHCHECK NONE
+
+COPY ./dist /app/dod/
+
+COPY ./dist.linux /app/dod/
 
 # UPDATE USERNAME
 RUN usermod -l DODSFreeplay DODS
 
 USER DODSFreeplay
 
-COPY ./dist /app/bin/
-
-COPY ./dist.linux /app/bin/dod/
-	
-WORKDIR /app/bin/
+WORKDIR /app/
