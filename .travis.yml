@@ -1,0 +1,30 @@
+sudo: required
+os: linux
+git: depth: 4
+
+addons:
+  apt:
+    packages:
+      - docker-ce
+
+services:
+  - docker
+
+script:
+  - docker version
+  - docker build --no-cache --tag lacledeslan/gamesvr-dods-freeplay --build-arg BUILDNODE=TravisCI -f Dockerfile.linux .
+  - docker run -it --rm lacledeslan/gamesvr-dods-freeplay ./ll-tests/gamesvr-dods-freeplay.sh
+
+notifications:
+  slack:
+    secure: NHJQ3T6gZgnFp+3SRl+f4tG+pSwkxLZS2FsgTQr4d9eGszspxehnlLgnakMeJnHfCcq4UwBz057RjcDn+VbM3Gee4uB4e89e998J/qZE07LP8QtRVYqZSjHC6BGqXqpvGcpg8Q/rBWYz1p6u4JTrcKoZCoE69xTvPsT/p6PUgN/7b4a97j0sL5HYiD15DFFup1RPb/99bnaOmO6kCd5AGOaFj7iSp25EqNp/fC+/E7S7iVGnWbzQ4UgBh+wdN3EyxwF+TvY1UJQ1TTRqxRUVyIZY3QbRezxmg065RnsUcl02jyd+uZN+sDpoT9qXVEpBxhGUTguPLNuNjU2Jnx/StID6EJltsItEtsjqiNvVmK1tll6IUdQ/hN4HXEj6sB1SPLp4Dd/ZLMazR9Ow+JVtfs8SLotQe81jInk3EgriXS5lJgJEM0rugHTS8WD3RPwVZSbyV470kia+AGIJAxh74JY+g7B0tbuOP3GTdkb4sWvi/SoKQsXbFqGLzaiFYeEHdju0qSfOFtUXuZKViyPq2uurIRNqI54WFTvzUS2UKbDOz7uTHexsjR+To1xJ1LUj6nIwehWaeZy/cVpbI+tGdubVfGk4G6zJhxoiboApC0ZkosHdW/h8iJaX5beBDnjrmLxJ6bAj6bKQO99SdRMhunEX6XG0OFstimVRmDmC0jo=
+
+before_deploy:
+  - docker login -u "$DOCKERHUB_USER" -p "$DOCKERHUB_PASS";
+deploy:
+  provider: script
+  script: docker push lacledeslan/gamesvr-dods-freeplay
+  on:
+    branch: master
+after_deploy:
+ - curl -X POST https://hooks.microbadger.com/images/lacledeslan/gamesvr-dods-freeplay/$MICROBADGER_TOKEN
