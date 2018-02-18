@@ -22,10 +22,8 @@ COPY --chown=DODS:root ./dist /app/
 
 COPY --chown=DODS:root ./ll-tests/*.sh /app/ll-tests
 
-RUN chmod +x /app/ll-tests/*.sh;
-
-# UPDATE USERNAME & ensure permissions
-RUN usermod -l DODSFreeplay DODS;
+RUN usermod -l DODSFreeplay DODS &&`
+    chmod +x /app/ll-tests/*.sh;
 
 USER DODSFreeplay
 
