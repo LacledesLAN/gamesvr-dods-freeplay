@@ -8,17 +8,17 @@
 ### Download
 
 ```shell
-docker pull lacledeslan/gamesvr-dods-freeplay
+docker pull lacledeslan/gamesvr-dods-freeplay;
+```
+
+### Run Self Tests
+
+```shell
+docker run -it --rm lacledeslan/gamesvr-dods-freeplay ./ll-tests/gamesvr-dods-freeplay.sh;
 ```
 
 ### Run Interactive Server
 
 ```shell
 docker run -it --rm --net=host lacledeslan/gamesvr-dods-freeplay ./srcds_run -game dod +map dod_avalanche +sv_lan 1
-```
-
-### Run Self Tests
-
-```shell
-docker run -it --rm lacledeslan/gamesvr-dods-freeplay ./ll-tests/gamesvr-dods-freeplay.sh
 ```
