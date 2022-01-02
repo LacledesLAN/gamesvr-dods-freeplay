@@ -1,11 +1,12 @@
+# Laclede's LAN Day of Defeat Source Dedicated Freeplay Server
+
 ![Laclede's LAN Day of Defeat Source Dedicated Freeplay Server](https://raw.githubusercontent.com/LacledesLAN/gamesvr-dods-freeplay/master/.misc/banner-dods-freeplay.png "Laclede's LAN Day of Defeat Source Dedicated Freeplay Server")
 
 This repository is maintained by [Laclede's LAN](https://lacledeslan.com). Its contents are heavily tailored and tweaked for use at our charity LAN-Parties. For third-parties we recommend using this repo only as a reference example and then building your own using [gamesvr-dods](https://github.com/LacledesLAN/gamesvr-dods) as the base image for your customized server.
 
 ## Linux Container
 
-[![](https://images.microbadger.com/badges/version/lacledeslan/gamesvr-dods-freeplay.svg)](https://microbadger.com/images/lacledeslan/gamesvr-dods-freeplay "Get your own version badge on microbadger.com")
-[![](https://images.microbadger.com/badges/image/lacledeslan/gamesvr-dods-freeplay.svg)](https://microbadger.com/images/lacledeslan/gamesvr-dods-freeplay "Get your own image badge on microbadger.com")
+[![linux/amd64](https://github.com/LacledesLAN/gamesvr-dods-freeplay/actions/workflows/build-linux-image.yml/badge.svg?branch=master)](https://github.com/LacledesLAN/gamesvr-dods-freeplay/actions/workflows/build-linux-image.yml)
 
 ### Download
 
@@ -14,6 +15,7 @@ docker pull lacledeslan/gamesvr-dods-freeplay;
 ```
 
 ### Run Self Tests
+
 The image includes a test script that can be used to verify its contents. No changes or pull-requests will be accepted to this repository if any tests fail.
 
 ```shell
