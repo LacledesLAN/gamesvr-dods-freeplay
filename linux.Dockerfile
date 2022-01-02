@@ -14,13 +14,13 @@ LABEL com.lacledeslan.build-node=$BUILDNODE `
       org.label-schema.description="LL Day of Defeat Dedicated Freeplay Server" `
       org.label-schema.vcs-url="https://github.com/LacledesLAN/gamesvr-dods-freeplay"
 
-COPY --chown=DODS:root ./sourcemod.linux /app/dod/
+COPY --chown=DODS:root /sourcemod.linux /app/dod
 
-COPY --chown=DODS:root ./sourcemod-configs /app/dod/
+COPY --chown=DODS:root /sourcemod-configs /app/dod
 
-COPY --chown=DODS:root ./dist /app/
+COPY --chown=DODS:root /dist /app
 
-COPY --chown=DODS:root ./ll-tests/*.sh /app/ll-tests
+COPY --chown=DODS:root /dist/linux/ll-tests /app/ll-tests
 
 RUN usermod -l DODSFreeplay DODS &&`
     chmod +x /app/ll-tests/*.sh;
